@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  justify-content: flex-start;
+  padding: 48px 111px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.logo-text {
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.03em;
+  color: #48588D;
+}
+
+.logo-text span {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.2em;
+  color: #ACACAC;
+}

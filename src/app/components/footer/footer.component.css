@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  padding: 30px 125px 30px 111px;
+  justify-content: space-between;
+}
+
+p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+
+.links {
+  display: flex;
+  padding: 0;
+  gap: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  list-style: none;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000000;
+}

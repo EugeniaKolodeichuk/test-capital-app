@@ -1,0 +1,67 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 class="form-title">Token</h1>
+  <p class="form-text">Create your own crypto token</p>
+  <div class="form-field">
+    <label for="company">Company</label>
+    <select id="company" formControlName="company" name="company" required>
+      <option value="my" [selected]="true">My company</option>
+      <option value="first">First company</option>
+      <option value="second">Second company</option>
+      <option value="third">Third company</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="token">Token name</label>
+    <input type="text" id="token" name="token" formControlName="token" required />
+  </div>
+  <div class="form-field">
+    <label for="symbol">Symbol</label>
+    <input type="text" id="symbol" name="symbol" formControlName="symbol" required />
+  </div>
+  <div class="form-field">
+    <label for="supply">Maximum token supply</label>
+    <input type="number" id="supply" name="supply" formControlName="supply" required />
+  </div>
+  <div class="form-field">
+    <label>Blockchain</label>
+    <div class="blockchain">
+      <button
+        type="button"
+        id="enthereum"
+        class="radio-button"
+        [class.checked]="form.controls['chain'].value === 'enthereum'"
+        (click)="form.controls['chain'].setValue('enthereum')"
+      >
+        Ethereum
+      </button>
+
+      <button
+        type="button"
+        id="binance"
+        class="radio-button"
+        [class.checked]="form.controls['chain'].value === 'binance'"
+        (click)="form.controls['chain'].setValue('binance')"
+      >
+        Binance Smart Chain
+      </button>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <label>Supply</label>
+    <div class="supply">
+      <input
+        type="checkbox"
+        id="enabled"
+        value="enabled"
+        name="isEnabled"
+        formControlName="isEnabled"
+        [checked]="true"
+      />
+      <label for="enabled">Enabled</label>
+    </div>
+  </div>
+
+  <button type="submit" class="button">SAVE DRAFT</button>
+</form>
