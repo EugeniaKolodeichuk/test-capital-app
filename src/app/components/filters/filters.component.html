@@ -1,1 +1,40 @@
-<p>filters works!</p>
+<div>
+  <input
+    type="text"
+    placeholder="Search by name"
+    (input)="updateItems()"
+    [(ngModel)]="searchText"
+  />
+</div>
+<div>
+  <select [(ngModel)]="selectedChain" (change)="updateItems()">
+    <option value="">Filter by chain</option>
+    <option *ngFor="let chain of chains" [value]="chain">{{ chain }}</option>
+  </select>
+  <select [(ngModel)]="selectedSupply" (change)="updateItems()">
+    <option *ngFor="let option of supplyOptions" [value]="option.value">{{ option.label }}</option>
+  </select>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Token (symbol)</th>
+      <th>Maximum token supply</th>
+      <th>Blockchain</th>
+      <th>Supply</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.company }}</td>
+      <td>{{ item.token }} ({{ item.symbol }})</td>
+      <td>{{ item.supply }}</td>
+      <td>{{ item.chain }}</td>
+      <td>{{ item.isEnabled }}</td>
+      <td><button type="button" (click)="onDuplicate(item.id)">Duplicate</button></td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" (click)="onAddToken()">Add Token</button>

@@ -60,6 +60,9 @@ form {
   align-items: center;
   color: #000000;
   outline: none;
+  font-family: 'Roboto',
+    sans-serif;
+
 }
 
 .form-field input {
@@ -73,6 +76,9 @@ form {
   align-items: center;
   color: #000000;
   padding: 7px 8px;
+  font-family: 'Roboto',
+    sans-serif;
+
 }
 
 .blockchain,
@@ -97,6 +103,9 @@ form {
   letter-spacing: 0.04em;
   color: #FFFFFF;
   cursor: pointer;
+  font-family: 'Roboto',
+    sans-serif;
+
 }
 
 .radio-button {
@@ -115,6 +124,9 @@ form {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Roboto',
+    sans-serif;
+
 }
 
 .radio-button.checked {

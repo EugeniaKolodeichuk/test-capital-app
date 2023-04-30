@@ -4,10 +4,10 @@
   <div class="form-field">
     <label for="company">Company</label>
     <select id="company" formControlName="company" name="company" required>
-      <option value="my" [selected]="true">My company</option>
-      <option value="first">First company</option>
-      <option value="second">Second company</option>
-      <option value="third">Third company</option>
+      <option value="My company" [selected]="true">My company</option>
+      <option value="First company">First company</option>
+      <option value="Second company">Second company</option>
+      <option value="Third company">Third company</option>
     </select>
   </div>
 
@@ -21,17 +21,26 @@
   </div>
   <div class="form-field">
     <label for="supply">Maximum token supply</label>
-    <input type="number" id="supply" name="supply" formControlName="supply" required />
+    <input type="text" id="supply" name="supply" formControlName="supply" required />
+    <div
+      *ngIf="
+        form.controls['supply'].errors &&
+        (form.controls['supply'].dirty || form.controls['supply'].touched)
+      "
+    >
+      <div *ngIf="form.controls['supply'].errors['required']">Supply is required.</div>
+      <div *ngIf="form.controls['supply'].errors['pattern']">Supply must be a number.</div>
+    </div>
   </div>
   <div class="form-field">
     <label>Blockchain</label>
     <div class="blockchain">
       <button
         type="button"
-        id="enthereum"
+        id="ethereum"
         class="radio-button"
-        [class.checked]="form.controls['chain'].value === 'enthereum'"
-        (click)="form.controls['chain'].setValue('enthereum')"
+        [class.checked]="form.controls['chain'].value === 'Ethereum'"
+        (click)="form.controls['chain'].setValue('Ethereum')"
       >
         Ethereum
       </button>
@@ -40,8 +49,8 @@
         type="button"
         id="binance"
         class="radio-button"
-        [class.checked]="form.controls['chain'].value === 'binance'"
-        (click)="form.controls['chain'].setValue('binance')"
+        [class.checked]="form.controls['chain'].value === 'Binance Smart Chain'"
+        (click)="form.controls['chain'].setValue('Binance Smart Chain')"
       >
         Binance Smart Chain
       </button>
