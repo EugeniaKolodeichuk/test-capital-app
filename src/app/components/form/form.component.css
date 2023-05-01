@@ -33,8 +33,8 @@ form {
   gap: 6px;
 }
 
-.form-field:not(:last-of-type) {
-  margin-bottom: 16px;
+.form-field:not(:first-of-type) {
+  margin-top: 16px;
 }
 
 .form-field label {
@@ -149,6 +149,10 @@ form {
   color: #000000;
 }
 
+.form-field input[name="symbol"] {
+  text-transform: uppercase;
+}
+
 .form-field .supply input[type="checkbox"] {
   padding: 0;
   position: relative;
@@ -178,4 +182,15 @@ form {
 
 .form-field .supply input[type="checkbox"]:checked:before {
   display: block;
+}
+
+.error-message {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  color: #C50000;
+}
+
+.submitted input {
+  border: 1px solid #C50000;
 }

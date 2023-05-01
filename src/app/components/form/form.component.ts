@@ -1,17 +1,21 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { ToastrService } from 'ngx-toastr';
+import { style, transition, trigger, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+
 })
 export class FormComponent implements OnInit {
   form!: FormGroup;
+  isSubmitted = false;
   @Output() formSubmitted = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder, private dataService: DataService) { }
+  constructor(private fb: FormBuilder, private dataService: DataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -20,11 +24,12 @@ export class FormComponent implements OnInit {
       symbol: ['', Validators.required],
       supply: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       chain: ['Ethereum', Validators.required],
-      isEnabled: [true, Validators.required]
+      isEnabled: [true]
     });
   }
 
   onSubmit() {
+    this.isSubmitted = true;
     if (this.form.valid) {
       console.log(this.form.value);
       const item = {
@@ -39,9 +44,10 @@ export class FormComponent implements OnInit {
 
       this.dataService.addItem(item);
       this.formSubmitted.emit();
-
+      this.toastr.success(`Token ${item.token} added successfully!`, 'Success');
       this.form.reset();
     } else {
+      this.toastr.error('Please fill in all required fields.', 'Error');
       return
     }
 

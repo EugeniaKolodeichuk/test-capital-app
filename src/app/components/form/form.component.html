@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" [class.submitted]="isSubmitted">
   <h1 class="form-title">Token</h1>
   <p class="form-text">Create your own crypto token</p>
   <div class="form-field">
@@ -14,21 +14,24 @@
   <div class="form-field">
     <label for="token">Token name</label>
     <input type="text" id="token" name="token" formControlName="token" required />
+    <div *ngIf="isSubmitted && form.controls['token'].errors" class="error-message">
+      <div *ngIf="form.controls['token'].errors['required']">Token name is required.</div>
+    </div>
   </div>
   <div class="form-field">
     <label for="symbol">Symbol</label>
     <input type="text" id="symbol" name="symbol" formControlName="symbol" required />
+    <div *ngIf="isSubmitted && form.controls['symbol'].errors" class="error-message">
+      <div *ngIf="form.controls['symbol'].errors['required']">Symbol is required.</div>
+    </div>
   </div>
   <div class="form-field">
     <label for="supply">Maximum token supply</label>
     <input type="text" id="supply" name="supply" formControlName="supply" required />
-    <div
-      *ngIf="
-        form.controls['supply'].errors &&
-        (form.controls['supply'].dirty || form.controls['supply'].touched)
-      "
-    >
-      <div *ngIf="form.controls['supply'].errors['required']">Supply is required.</div>
+    <div *ngIf="form.controls['supply'].errors" class="error-message">
+      <div *ngIf="isSubmitted && form.controls['supply'].errors['required']">
+        Maximum token supply is required.
+      </div>
       <div *ngIf="form.controls['supply'].errors['pattern']">Supply must be a number.</div>
     </div>
   </div>
