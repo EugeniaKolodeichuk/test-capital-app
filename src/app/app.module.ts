@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FiltersComponent } from './components/filters/filters.component';
 import { FormComponent } from './components/form/form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
-import { ToastrModule } from 'ngx-toastr';
-import { CommonModule } from '@angular/common';
+import { ItemListComponent } from './components/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { CommonModule } from '@angular/common';
     HeaderComponent,
     FormComponent,
     FiltersComponent,
-    FooterComponent
+    FooterComponent,
+    ItemListComponent
   ],
   imports: [
     CommonModule,

@@ -3,10 +3,8 @@
 
 body {
   margin: 0 auto;
-  height: 100vh;
   font-family: 'Roboto', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  width: 100vw;
   max-width: 1536px;
 }

@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showForm = true;
-  //formSubmitted = false;
+  public showForm = true;
 
-  toggleForm(): void {
+  public toggleForm(): void {
     this.showForm = !this.showForm;
   }
 }

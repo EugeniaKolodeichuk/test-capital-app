@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Token } from '../models/token';
+import { Token } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private items: any[] = [];
+  private items: Token[] = [];
 
-  getItems(): Token[] {
+  public getItems(): Token[] {
     return this.items;
   }
 
-  addItem(item: Token): void {
+  public addItem(item: Token): void {
     this.items.push(item);
   }
 
-  filterItems(searchText: string, selectedChain: string, selectedSupply: string): Token[] {
+  public filterItems(searchText: string, selectedChain: string, selectedSupply: string): Token[] {
     return this.items.filter(item => {
       const chainMatch = !selectedChain || item.chain === selectedChain;
       const supplyMatch = !selectedSupply || item.isEnabled.toString() === selectedSupply;

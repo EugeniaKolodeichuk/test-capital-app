@@ -3,52 +3,24 @@
     type="text"
     placeholder="Search by token name"
     (input)="updateItems()"
-    [(ngModel)]="searchText"
+    [(ngModel)]="model.searchText"
   />
   <div class="filters">
-    <select [(ngModel)]="selectedChain" (change)="updateItems()">
+    <select [(ngModel)]="model.selectedChain" (change)="updateItems()">
       <option value="">Filter by blockchain</option>
       <option *ngFor="let chain of chains" [value]="chain">{{ chain }}</option>
     </select>
-    <select [(ngModel)]="selectedSupply" (change)="updateItems()">
+    <select [(ngModel)]="model.selectedSupply" (change)="updateItems()">
       <option *ngFor="let option of supplyOptions" [value]="option.value">
         {{ option.label }}
       </option>
     </select>
   </div>
 </div>
-<ul class="responsive-table">
-  <li class="table-header">
-    <div class="col col-xs"></div>
-    <div class="col col-m">Company</div>
-    <div class="col col-l">Token (symbol)</div>
-    <div class="col col-m">Maximum token supply</div>
-    <div class="col col-m">Blockchain</div>
-    <div class="col col-s">Supply</div>
-    <div class="col col-s">Copy token</div>
-  </li>
-  <li *ngFor="let item of items; let i = index" class="table-row">
-    <div class="col col-xs">{{ i + 1 }}</div>
-    <div class="col col-m">{{ item.company }}</div>
-    <div class="col col-l">{{ item.token }} ({{ item.symbol.toUpperCase() }})</div>
-    <div class="col col-m">{{ item.supply }}</div>
-    <div class="col col-m">{{ item.chain }}</div>
-    <div class="col col-s">
-      <ng-container *ngIf="item.isEnabled; else disabled">
-        <img src="../../../assets/checkmark.svg" />
-      </ng-container>
-      <ng-template #disabled>
-        <img src="../../../assets/cross.svg" />
-      </ng-template>
-    </div>
-
-    <div class="col col-s">
-      <button type="button" class="copy-button" (click)="onDuplicate(i)">
-        <img src="../../../assets/copy.svg" alt="copy" />
-      </button>
-    </div>
-  </li>
-</ul>
+<app-item-list *ngIf="items" [items]="items" (addToken)="onAddToken()"></app-item-list>
+<p *ngIf="!items.length" class="error-message">
+  Tokens not found. Please specify your request or add new item.
+</p>
 <button type="button" class="add-button" (click)="onAddToken()">
   <img src="../../../assets/add.svg" alt="add" />
 </button>

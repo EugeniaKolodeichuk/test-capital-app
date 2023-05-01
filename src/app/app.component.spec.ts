@@ -1,31 +1,52 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      imports: [
+        AppModule
+      ]
+    })
+      .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'test-capital-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('test-capital-app');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should show the form when showForm is true', () => {
+    component.showForm = true;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('test-capital-app app is running!');
+    const form = fixture.nativeElement.querySelector('app-form');
+    expect(form).toBeTruthy();
+  });
+
+  it('should show the filters when showForm is false', () => {
+    component.showForm = false;
+    fixture.detectChanges();
+    const filters = fixture.nativeElement.querySelector('app-filters');
+    expect(filters).toBeTruthy();
+  });
+
+  it('should toggle showForm when toggleForm() is called', () => {
+    component.showForm = true;
+    component.toggleForm();
+    expect(component.showForm).toBe(false);
+    component.toggleForm();
+    expect(component.showForm).toBe(true);
   });
 });

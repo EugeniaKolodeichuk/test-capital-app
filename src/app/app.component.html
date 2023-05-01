@@ -1,10 +1,8 @@
 <app-header></app-header>
-<!-- <app-form></app-form>
-<app-filters></app-filters> -->
-<div *ngIf="showForm" class="content">
-  <app-form (formSubmitted)="toggleForm()"></app-form>
-</div>
-<div *ngIf="!showForm" class="content">
-  <app-filters (addToken)="toggleForm()"></app-filters>
-</div>
+<ng-container *ngIf="showForm">
+  <app-form (formSubmitted)="toggleForm()" class="content"></app-form>
+</ng-container>
+<ng-container *ngIf="!showForm">
+  <app-filters (addToken)="toggleForm()" class="content"></app-filters>
+</ng-container>
 <app-footer class="footer"></app-footer>

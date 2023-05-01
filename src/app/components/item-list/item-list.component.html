@@ -1,0 +1,27 @@
+<ul class="responsive-table">
+  <li class="table-header">
+    <div class="col col-xs"></div>
+    <div class="col col-m">Company</div>
+    <div class="col col-l">Token (symbol)</div>
+    <div class="col col-m">Maximum token supply</div>
+    <div class="col col-m">Blockchain</div>
+    <div class="col col-s">Supply</div>
+    <div class="col col-s">Copy token</div>
+  </li>
+  <li *ngFor="let item of items; let i = index" class="table-row">
+    <div class="col col-xs">{{ i + 1 }}</div>
+    <div class="col col-m">{{ item.company }}</div>
+    <div class="col col-l">{{ item.token }} ({{ item.symbol.toUpperCase() }})</div>
+    <div class="col col-m">{{ item.supply }}</div>
+    <div class="col col-m">{{ item.chain }}</div>
+    <div class="col col-s">
+      <img src="../../../assets/{{ item.isEnabled ? 'checkmark' : 'cross' }}.svg" />
+    </div>
+
+    <div class="col col-s">
+      <button type="button" class="copy-button" (click)="onDuplicate(item)">
+        <img src="../../../assets/copy.svg" alt="copy" />
+      </button>
+    </div>
+  </li>
+</ul>

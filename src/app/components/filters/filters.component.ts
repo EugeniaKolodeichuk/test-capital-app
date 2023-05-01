@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { Token } from 'src/app/models/token';
+import { FiltersModel, Token } from 'src/app/models/interfaces';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -9,12 +8,12 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
-  items: Token[] = [];
-  selectedChain = '';
-  selectedSupply = '';
-  searchText = '';
-  chains: string[] = ['Ethereum', 'Binance Smart Chain'];
-  supplyOptions: {
+  @Output() addToken = new EventEmitter<void>();
+
+  public items: Token[] = [];
+  public model: FiltersModel = { selectedChain: '', selectedSupply: '', searchText: '' };
+  public chains: string[] = ['Ethereum', 'Binance Smart Chain'];
+  public supplyOptions: {
     value: string, label: string
   }[] = [
       { value: '', label: 'Filter by supply' },
@@ -22,25 +21,18 @@ export class FiltersComponent implements OnInit {
       { value: 'false', label: 'Disabled' }
     ];
 
-  @Output() addToken = new EventEmitter<void>();
-
-  constructor(private dataService: DataService, private toastr: ToastrService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.items = this.dataService.getItems();
   }
 
-  updateItems(): void {
-    this.items = this.dataService.filterItems(this.searchText, this.selectedChain, this.selectedSupply);
+  public updateItems(): void {
+    const { searchText, selectedChain, selectedSupply } = this.model;
+    this.items = this.dataService.filterItems(searchText, selectedChain, selectedSupply);
   }
 
-  onDuplicate(i: number): void {
-    //const index = this.items.findIndex(obj => obj.id === id);
-    this.dataService.addItem(this.items[i]);
-    this.toastr.success(`Token copied successfully!`, 'Success');
-  }
-
-  onAddToken(): void {
+  public onAddToken = () => {
     this.addToken.emit();
   }
 }

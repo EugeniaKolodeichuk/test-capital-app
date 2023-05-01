@@ -2,37 +2,39 @@
   <h1 class="form-title">Token</h1>
   <p class="form-text">Create your own crypto token</p>
   <div class="form-field">
-    <label for="company">Company</label>
+    <label htmlFor="company">Company</label>
     <select id="company" formControlName="company" name="company" required>
-      <option value="My company" [selected]="true">My company</option>
-      <option value="First company">First company</option>
-      <option value="Second company">Second company</option>
-      <option value="Third company">Third company</option>
+      <option *ngFor="let option of companyOptions" [value]="option">{{ option }}</option>
     </select>
   </div>
-
   <div class="form-field">
-    <label for="token">Token name</label>
+    <label htmlFor="token">Token name</label>
     <input type="text" id="token" name="token" formControlName="token" required />
-    <ng-container *ngIf="isSubmitted && form.controls['token'].errors" class="error-message">
-      <div *ngIf="form.controls['token'].errors['required']">Token name is required.</div>
+    <ng-container *ngIf="isSubmitted && form.controls['token'].errors">
+      <div *ngIf="form.controls['token'].errors['required']" class="error-message">
+        Token name is required.
+      </div>
     </ng-container>
   </div>
   <div class="form-field">
-    <label for="symbol">Symbol</label>
+    <label htmlFor="symbol">Symbol</label>
     <input type="text" id="symbol" name="symbol" formControlName="symbol" required />
-    <ng-container *ngIf="isSubmitted && form.controls['symbol'].errors" class="error-message">
-      <div *ngIf="form.controls['symbol'].errors['required']">Symbol is required.</div>
+    <ng-container *ngIf="isSubmitted && form.controls['symbol'].errors">
+      <div *ngIf="form.controls['symbol'].errors['required']" class="error-message">
+        Symbol is required.
+      </div>
     </ng-container>
   </div>
   <div class="form-field">
-    <label for="supply">Maximum token supply</label>
+    <label htmlFor="supply">Maximum token supply</label>
     <input type="text" id="supply" name="supply" formControlName="supply" required />
-    <ng-container *ngIf="form.controls['supply'].errors" class="error-message">
-      <div *ngIf="isSubmitted && form.controls['supply'].errors['required']">
+    <ng-container *ngIf="form.controls['supply'].errors">
+      <div *ngIf="isSubmitted && form.controls['supply'].errors['required']" class="error-message">
         Maximum token supply is required.
       </div>
-      <div *ngIf="form.controls['supply'].errors['pattern']">Supply must be a number.</div>
+      <div *ngIf="form.controls['supply'].errors['pattern']" class="error-message">
+        Supply must be a number.
+      </div>
     </ng-container>
   </div>
   <div class="form-field">

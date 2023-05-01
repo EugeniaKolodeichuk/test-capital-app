@@ -15,7 +15,7 @@ form {
   font-size: 64px;
   line-height: 84px;
   text-align: center;
-  color: #000000;
+  color: #000;
 }
 
 .form-text {
@@ -24,17 +24,18 @@ form {
   font-size: 14px;
   line-height: 21px;
   text-align: center;
-  color: #000000;
+  color: #000;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  margin-top: 16px;
 }
 
-.form-field:not(:first-of-type) {
-  margin-top: 16px;
+.form-field:first-of-type {
+  margin-top: 0;
 }
 
 .form-field label {
@@ -42,6 +43,18 @@ form {
   font-size: 12px;
   line-height: 12px;
   color: #727272;
+}
+
+.form-field select,
+.form-field input {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
 }
 
 .form-field select {
@@ -53,90 +66,63 @@ form {
   background-repeat: no-repeat;
   background-position: 45% center;
   border: none;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  display: flex;
-  align-items: center;
-  color: #000000;
-  outline: none;
-  font-family: 'Roboto',
-    sans-serif;
-
+  cursor: pointer;
 }
 
 .form-field input {
-  border: 1px solid #BBBBBB;
+  border: 1px solid #bbb;
   border-radius: 8px;
-  outline: none;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  color: #000000;
   padding: 7px 8px;
-  font-family: 'Roboto',
-    sans-serif;
+}
+
+.form-field input[name="symbol"] {
+  text-transform: uppercase;
 }
 
 .blockchain,
 .supply {
   display: flex;
   align-items: center;
-}
-
-.blockchain {
   gap: 8px;
 }
 
 .button {
   margin: 64px 0 160px 0;
   padding: 8px 15px;
-  background: #C50000;
+  background: #c50000;
   border: none;
   border-radius: 48px;
   font-weight: 900;
   font-size: 16px;
   text-align: center;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
+  color: #fff;
   cursor: pointer;
-  font-family: 'Roboto',
-    sans-serif;
-
+  font-family: 'Roboto', sans-serif;
 }
 
 .radio-button {
   min-height: 28px;
   padding: 0 14px;
-  background-color: #FFFFFF;
+  background-color: #fff;
   font-weight: 500;
   font-size: 14px;
   line-height: 14px;
   display: flex;
   align-items: center;
-  border: 1px solid #BBBBBB;
+  border: 1px solid #bbb;
   border-radius: 28px;
   text-align: center;
-  color: #000000;
-  text-align: center;
+  color: #000;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Roboto',
-    sans-serif;
-
+  font-family: 'Roboto', sans-serif;
 }
 
 .radio-button.checked {
-  background: #C50000;
+  background: #c50000;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 .supply label {
@@ -145,11 +131,8 @@ form {
   line-height: 14px;
   display: flex;
   align-items: center;
-  color: #000000;
-}
-
-.form-field input[name="symbol"] {
-  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
 }
 
 .form-field .supply input[type="checkbox"] {
@@ -165,7 +148,7 @@ form {
   cursor: pointer;
 }
 
-.form-field .supply input[type="checkbox"]:before {
+.form-field .supply input[type="checkbox"]::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -179,7 +162,7 @@ form {
   display: none;
 }
 
-.form-field .supply input[type="checkbox"]:checked:before {
+.form-field .supply input[type="checkbox"]:checked::before {
   display: block;
 }
 

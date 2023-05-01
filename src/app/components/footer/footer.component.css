@@ -5,14 +5,13 @@
   margin-top: auto;
 }
 
-p {
+.footer-text {
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  color: #000000;
 }
 
-.links {
+.footer-links {
   display: flex;
   padding: 0;
   gap: 30px;
@@ -23,5 +22,10 @@ p {
   text-align: center;
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.footer-text a,
+.footer-links a {
+  text-decoration: none;
   color: #000000;
 }

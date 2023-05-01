@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
 import { ToastrService } from 'ngx-toastr';
-import { style, transition, trigger, animate } from '@angular/animations';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-form',
@@ -10,9 +9,13 @@ import { style, transition, trigger, animate } from '@angular/animations';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  form!: FormGroup;
-  isSubmitted = false;
   @Output() formSubmitted = new EventEmitter<void>();
+
+  public form!: FormGroup;
+  public isSubmitted = false;
+  public companyOptions: string[] = [
+    'My company', 'First company', 'Second company', 'Third company'
+  ];
 
   constructor(private fb: FormBuilder, private dataService: DataService, private toastr: ToastrService) { }
 
@@ -27,12 +30,11 @@ export class FormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  public onSubmit() {
     this.isSubmitted = true;
     if (this.form.valid) {
-      console.log(this.form.value);
+
       const item = {
-        id: Math.random(),
         company: this.form.get('company')?.value,
         token: this.form.get('token')?.value,
         symbol: this.form.get('symbol')?.value,
@@ -47,7 +49,6 @@ export class FormComponent implements OnInit {
       this.form.reset();
     } else {
       this.toastr.error('Please fill in all required fields.', 'Error');
-      return;
     }
   }
 }

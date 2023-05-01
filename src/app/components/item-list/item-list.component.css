@@ -1,0 +1,68 @@
+.responsive-table {
+  padding: 0;
+}
+
+.responsive-table li {
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.table-header {
+  background-color: #48588D;
+  color: #FFFFFF;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.table-row {
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  font-weight: 400;
+}
+
+.table-row img {
+  height: 15px;
+}
+
+.col-xs {
+  flex-basis: 5%;
+}
+
+.col-s {
+  flex-basis: 10%;
+}
+
+.col-m {
+  flex-basis: 20%;
+}
+
+.col-l {
+  flex-basis: 25%;
+}
+
+.copy-button {
+  display: flex;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background: none;
+}
+
+.copy-button img {
+  height: 20px;
+}
+
+.copy-button:hover {
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.192);
+}
