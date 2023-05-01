@@ -8,7 +8,6 @@ import { style, transition, trigger, animate } from '@angular/animations';
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css'],
-
 })
 export class FormComponent implements OnInit {
   form!: FormGroup;
@@ -19,11 +18,11 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      company: ['My company', Validators.required],
+      company: ['My company'],
       token: ['', Validators.required],
       symbol: ['', Validators.required],
       supply: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      chain: ['Ethereum', Validators.required],
+      chain: ['Ethereum'],
       isEnabled: [true]
     });
   }
@@ -48,11 +47,7 @@ export class FormComponent implements OnInit {
       this.form.reset();
     } else {
       this.toastr.error('Please fill in all required fields.', 'Error');
-      return
+      return;
     }
-
-
-
-    // submit the form data to the server or perform any other action
   }
 }

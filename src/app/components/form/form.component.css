@@ -78,7 +78,6 @@ form {
   padding: 7px 8px;
   font-family: 'Roboto',
     sans-serif;
-
 }
 
 .blockchain,
@@ -111,7 +110,7 @@ form {
 .radio-button {
   min-height: 28px;
   padding: 0 14px;
-  background-color: white;
+  background-color: #FFFFFF;
   font-weight: 500;
   font-size: 14px;
   line-height: 14px;
@@ -189,8 +188,4 @@ form {
   font-size: 12px;
   line-height: 12px;
   color: #C50000;
-}
-
-.submitted input {
-  border: 1px solid #C50000;
 }

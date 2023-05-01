@@ -34,9 +34,9 @@ export class FiltersComponent implements OnInit {
     this.items = this.dataService.filterItems(this.searchText, this.selectedChain, this.selectedSupply);
   }
 
-  onDuplicate(id: number): void {
-    const index = this.items.findIndex(obj => obj.id === id);
-    this.dataService.addItem(this.items[index]);
+  onDuplicate(i: number): void {
+    //const index = this.items.findIndex(obj => obj.id === id);
+    this.dataService.addItem(this.items[i]);
     this.toastr.success(`Token copied successfully!`, 'Success');
   }
 

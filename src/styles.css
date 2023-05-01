@@ -3,7 +3,8 @@
 
 body {
   margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  font-family: 'Roboto', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;

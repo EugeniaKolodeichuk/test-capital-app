@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Set the minimum height of the wrapper to the height of the viewport */
+}
+
+.content {
+  flex: 1;
+  /* Let the main content expand to fill the available space */
+}
+
+.footer {
+  flex-shrink: 0;
+  /* Don't let the footer shrink */
+}
